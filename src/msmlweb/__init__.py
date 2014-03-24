@@ -1,11 +1,11 @@
 __author__ = 'weigla'
 
+
 from flask import *
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import FileStorage
-
 from path import path
-from .sqlmodel import *
+from .model import *
 
 import os
 
@@ -16,29 +16,13 @@ storage_dir = path("storage").abspath()
 app = Flask("msmlweb")
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config["SECRET_KEY"] = "fdfsdafksdaöhaöhsdaöfsdahföiosdhaf"
-app.config['SHELVE_FILENAME'] = "database"
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///msmlweb.db'
+db.init_app(app)
 
-##
-# DATABASE
-from collections import defaultdict
-db = defaultdict(list)
-##
-# DATABASE
-
-def add_file_entry(fe):
-    db['files'].append(fe)
-
-def add_user(user=None, name=None, email=None, pwd=None):
-    if not user:
-        user = User(name, email, pwd)
-
-    db['users'].append(user)
-#
-##
 
 ## debug:
 #len(db['users']) == 0 and \
-db['users'].append( User("weigl", "weigl@his", "123") )
+#db['users'].append( User("weigl", "weigl@his", "123") )
 
 def allowed_file(filename):
     return True# return filename.endswith("zip")
