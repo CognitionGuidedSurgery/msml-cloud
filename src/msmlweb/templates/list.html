@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %} - Available Jobs{% endblock %}
+{% block pagehead %}
+    <h1>Available Jobs</h1>
+{% endblock %}
+
+{% block content %}
+<table class="table table-striped table-hover">
+    <tr>
+        <th>name</th>
+        <th>last run</th>
+        <th>state</th>
+        <th>author</th>
+        <th></th>
+    </tr>
+
+    <tbody>
+
+    {% for entry in file_entries %}
+
+    <tr>
+        <td>{{ entry.name }}</td>
+        <td>{{ entry.last_run }}</td>
+        <td>{{ entry.state }}</td>
+        <td>{{ entry.user_name  }}</td>
+        <td>
+         <button type="button" class="btn btn-default">exec</button>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}
