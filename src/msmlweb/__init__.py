@@ -28,6 +28,9 @@ gravatar = Gravatar(app,
                     use_ssl=False,
                     base_url=None)
 
+from flask_debugtoolbar import DebugToolbarExtension
+toolbar = DebugToolbarExtension(app)
+
 AuthView.register(app)
 FilesView.register(app)
 
