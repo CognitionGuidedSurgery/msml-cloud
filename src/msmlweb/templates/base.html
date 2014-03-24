@@ -67,6 +67,9 @@
                 {% if not session.loggedin %}
                 <li><a href="/credentials">Login or Signup</a></li>
                 {% else %}
+                <li>
+                <img src="{{ session.user.email | gravatar(size=50) }}" />
+                {{ session.user.name }}</li>
                 <li><a href="/logout">Logout</a></li>
                 {% endif %}
             </ul>

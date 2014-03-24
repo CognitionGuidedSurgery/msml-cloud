@@ -1,5 +1,17 @@
 Flask
 Flask-SQLAlchemy
 Flask-WTF
+Flask-Classy
+Flask-DebugToolbar
+Flask-Celery
+Flask-Cache
+Flask-Assets
+Flask-Exceptional
+Flask-fillin
+Flask-Gravatar
+flask-lesscss
+Flask-Login
+Flask-Restless
+Flask-Uploads
 path.py
 Celery

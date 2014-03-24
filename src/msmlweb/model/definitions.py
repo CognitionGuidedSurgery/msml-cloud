@@ -21,7 +21,7 @@ class User(db.Model, object):
         self.name = name
         self.email = email
         if password_clear:
-            self.password = hash_password(password_clear)
+            self.password = (password_clear)
         else:
             self.password = password_salted
 
@@ -30,13 +30,16 @@ class User(db.Model, object):
             self.name, self.email, self.password)
 
 
-class FileEntry(object):
+class FileEntry(db.Model, object):
     __tablename__ = "files"
 
+    id = db.Column(db.Integer(), primary_key = True)
     name = db.Column(db.String(20), unique=True)
     description = db.Column(db.String(1000))
-    author = db.Column(db.Integer, db.ForeignKey('User.id'))
+    author = db.Column(db.Integer, db.ForeignKey('users.id'))
     uploaded = db.Column(db.DateTime)
+    last_run = db.Column(db.DateTime)
+    asset = db.Column(db.String(1000))
     state = db.Column(db.Enum('paused', 'error', 'pending', 'success',
                               name='filestates'))
 
