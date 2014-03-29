@@ -1,3 +1,10 @@
+#general
+path.py
+celery
+redis
+
+
+# web
 Flask
 Flask-SQLAlchemy
 Flask-WTF
@@ -13,6 +20,6 @@ flask-lesscss
 Flask-Login
 Flask-Restless
 Flask-Uploads
-path.py
-celery
-celery[redis]
+
+#delegate
+docopt
